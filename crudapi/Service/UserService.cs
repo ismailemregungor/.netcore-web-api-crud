@@ -30,19 +30,13 @@ namespace crudapi.Service
             return _context.Users?.Find(id);
         }
 
-        public User Create(CreateRequest model)
+        public void Create(CreateRequest model)
         {
             var user = _mapper.Map<User>(model);
 
             _context.Users.Add(user);
             _context.SaveChanges();
-
-            return user;
         }
 
-        void IUserService.Create(CreateRequest model)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
