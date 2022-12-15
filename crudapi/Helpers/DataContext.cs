@@ -23,7 +23,7 @@ namespace crudapi.Helpers
         }
 
 
-        public DbSet<User>? Users { get; set; }
+        public DbSet<User> Users { get; set; } = null!;
     }
 
 }

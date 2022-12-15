@@ -12,5 +12,7 @@ namespace crudapi.Service
         IEnumerable<User> GetAll();
         User GetById(int id);
         void Create(CreateRequest model);
+        void Update(int id, UpdateRequest model);
+        void Delete(int id);
     }
 }

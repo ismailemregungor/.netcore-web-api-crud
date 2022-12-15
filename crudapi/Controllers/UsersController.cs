@@ -13,12 +13,12 @@ namespace crudapi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public UserController(IUserService userService, IMapper mapper)
+        public UsersController(IUserService userService, IMapper mapper)
         {
             _userService = userService;
             _mapper = mapper;
@@ -43,6 +43,20 @@ namespace crudapi.Controllers
         {
             _userService.Create(model);
             return Ok("User created successfully");
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, UpdateRequest model)
+        {
+            _userService.Update(id, model);
+            return Ok(new { message = "User updated" });
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _userService.Delete(id);
+            return Ok(new { message = "User deleted" });
         }
     }
 }
